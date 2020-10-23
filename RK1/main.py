@@ -1,8 +1,8 @@
 from operator import itemgetter
 
 
-class Comp:
-    """Компьютер"""
+class Disp:
+    """Дисплейный класс"""
 
     def __init__(self, id, name, cost, disp_id):
         self.id = id
@@ -11,8 +11,8 @@ class Comp:
         self.disp_id = disp_id
 
 
-class Disp:
-    """Дисплейный класс"""
+class Comp:
+    """Компьютер"""
 
     def __init__(self, id, name):
         self.id = id
@@ -21,7 +21,7 @@ class Disp:
 
 class CompDisp:
     """
-    'Компьютеры дисплейного класса' для реализации
+    'Дисплейные классы компьютера' для реализации
     связи многие-ко-многим
     """
 
@@ -32,22 +32,22 @@ class CompDisp:
 
 # Компьютер
 displays = [
-    Disp(1, 'FULL HD 60Gz'),
-    Disp(2, '4K 60Gz'),
-    Disp(3, 'FullHD 120Gz'),
+    Comp(1, 'LG'),
+    Comp(2, 'Sony'),
+    Comp(3, 'Macbook'),
 
-    Disp(11, ' (другой) FULL HD 60Gz'),
-    Disp(22, '4K 60Gz (другой)'),
-    Disp(33, '(другая) FullHD 120Gz'),
+    Comp(11, ' (другой) LG'),
+    Comp(22, 'Sony (другой)'),
+    Comp(33, '(другая) Macbook'),
 ]
 
 # Дисплейный класс
 dispmodel = [
-    Comp(1, 'LG', 25000, 1),
-    Comp(2, 'Sony', 35000, 2),
-    Comp(3, 'Apple PRO Display XDR', 45000, 3),
-    Comp(4, 'AOC', 35000, 3),
-    Comp(5, 'MSI', 25000, 3),
+    Disp(1, 'FullHD 60Gz', 25000, 1),
+    Disp(2, '4K 60Gz', 35000, 2),
+    Disp(3, 'FullHD 144Gz', 45000, 3),
+    Disp(4, '8K 60Gz', 35000, 3),
+    Disp(5, 'HD 240Gz', 25000, 3),
 ]
 
 comp_disp = [
@@ -108,7 +108,7 @@ def main():
     res_13 = {}
 
     for d in displays:
-        if '60Gz' in d.name:
+        if 'Macbook' in d.name:
 
             d_emps = list(filter(lambda i: i[2] == d.name, many_to_many))
             d_emps_names = [x for x, _, _ in d_emps]
